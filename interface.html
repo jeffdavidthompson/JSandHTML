@@ -9,28 +9,31 @@
     <tr>
       <td height="500" style="word-wrap: break-word;">
         <center>
-          <img id="column1" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
-          <p>
-            Alien
+          <img id="imgcol1" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
+          <p id="textcol1">
+            Starting Text: Welcome to Half Life 3 v.01.
+            <br>
+            Press "START GAME" to Start.
           </p>
+          <button id="start" style="visibility:visible" onclick="foo()">START GAME</button>
           <br>
           <!-- This break is an ad-hoc fix for the vert centering after buttons -->
         </center>
       </td>
       <td>
         <center>
-          <img id="column2" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
-          <p>
+          <img id="imgcol2" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
+          <p id="textcol2">
             Alien
           </p>
           <button id="choice1" style="visibility:hidden">BUTTON</button>
           <button id="choice2" style="visibility:hidden">BUTTON</button>
         </center>
-      </td> 
+      </td>
       <td>
         <center>
-          <img id="column3" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
-          <p>
+          <img id="imgcol3" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
+          <p id="textcol3">
             Alien
           </p>
           <button id="confirm" style="visibility:hidden">BUTTON</button>
@@ -39,5 +42,15 @@
     </tr>
   </table>
 </center>
+
+<!--Functions-->
+  <script>
+
+//Changes starting text by importing from JS file "you are in a closet. Wat you do?"
+//Updates image file: Closet
+//Hides the START GAME button in column 1
+//In column 2, unhides buttons, assigns ID choice1 and choice2, inserts image tags, imports text from JS file
+
+  </script>
 
 </html>
