@@ -27,8 +27,8 @@
             <p id="textcol2">
 
             </p>
-            <button id="choice1" onclick="play('forward')" style="visibility:hidden">BUTTON</button>
-            <button id="choice2" onclick="play('backward')" style="visibility:hidden">BUTTON</button>
+            <button id="choice1" onclick="choice('Forward')" style="visibility:hidden">BUTTON</button>
+            <button id="choice2" onclick="choice('Backward')" style="visibility:hidden">BUTTON</button>
           </center>
         </td>
         <td>
@@ -37,7 +37,7 @@
             <p id="textcol3">
 
             </p>
-            <button id="confirm" style="visibility:hidden" onclick="col3ok()">I ACCEPT MY FATE</button>
+            <button id="refresh" style="visibility:hidden" onclick="refresh()">I ACCEPT MY FATE</button>
           </center>
         </td>
       </tr>
@@ -47,7 +47,8 @@
   <!--Functions-->
    <script>
 
-   buttonTextChoices = ["Forward","Backward","Punch","Kick"];
+   buttonTextChoicePass = ["Forward","Punch"];
+   buttonTextChoiceFail = ["Backward","Kick"];
 
    col1TextInfo = ["You find yourself in the middle of a small closet with no memory of how you got there. The door is ajar.","An insectoid like creature jumps toward you!"]
 
@@ -55,16 +56,20 @@
 
    col3TextPass = ["You step forward into the darkened hallway, only to hear a scuttling creature rushing toward you.","You kick the alien into a wall and it explodes into goo. CONGRATULATIONS! Please purchase the DLC to continue your adventure."]
 
-   col3TextFail = ["You step backward a little too hard. Your skull explodes into bits.","The alien devours your arm up to your shoulder and leaps away. GAME OVER!"]
+   col3TextDeath = ["You step backward a little too hard. Your skull explodes into bits.","The alien devours your arm up to your shoulder and leaps away. GAME OVER!"]
+
+    var turn = 0
+    var dead = false
 
     var start = function(onclick) {
-      changeText("textcol1", col1TextInfo[0]);
+      changeText("textcol1", col1TextInfo[turn]);
       hideButton("start");
       updateCol2();
     }
 
-    var col3ok = function(onclick) {
-      hideButton("confirm");
+    var refresh = function(onclick) {
+      turn++
+      hideButton("refresh");
       hideButton("textcol3");
       hideButton("imgcol3");
       updateCol1();
@@ -74,14 +79,14 @@
     var updateCol2 = function(){
       showButton("choice1");
       showButton("choice2");
-      changeText("choice1",buttonTextChoices[0]);
-      changeText("choice2",buttonTextChoices[1]);
-      changeText("textcol2",col2TextInfo[0]);
+      changeText("choice1",buttonTextChoicePass[turn]);
+      changeText("choice2",buttonTextChoiceFail[turn]);
+      changeText("textcol2",col2TextInfo[turn]);
       changePic("imgcol2","http://t0.gstatic.com/images?q=tbn:ANd9GcQywV5sRb-TwhyMyCwxohe2Y70Vjy_my9mBylos5v4sosAQnhb0NA");
     }
 
     var updateCol1 = function(){
-      changeText("textcol1", col1TextInfo[1]);
+      changeText("textcol1",col1TextInfo[turn]);
       changePic("imgcol1","http://t0.gstatic.com/images?q=tbn:ANd9GcQywV5sRb-TwhyMyCwxohe2Y70Vjy_my9mBylos5v4sosAQnhb0NA");
     }
 
@@ -108,26 +113,29 @@
 
     }
 
-    var play = function (action){
-      if (action == "forward"){
-        changeText("textcol3",col3TextPass[0]);
+//if(isInArray(userChoice.toLowerCase(),passKeys)
+
+    var choice = function (action){
+      if (action == "Forward"){
+        changeText("textcol3",col3TextPass[turn]);
         changePic("imgcol3", "blah");
       }
-      else if (action == "backward"){
-        changeText("textcol3",col3TextFail[0]);
+      else if (action == "Backward"){
+        changeText("textcol3",col3TextDeath[turn]);
         changePic("imgcol3", "blah");
       }
-      else if (action == "kick") {
+      else if (action == "Kick") {
+        showButton("textcol3");
         changeText("textcol3",col3TextPass[1]);
         changePic("imgcol3", "blah");
       }
-      else if (action == "punch") {
-        changeText("textcol3",col3TextFail[1])
+      else if (action == "Punch") {
+        changeText("textcol3",col3TextDeath[turn])
         changePic("imgcol3", "blah");
       }
       hideButton("choice1");
       hideButton("choice2");
-      showButton("confirm");
+      showButton("refresh");
 
     }
 
