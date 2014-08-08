@@ -25,17 +25,17 @@
           <center>
             <img id="imgcol2" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
             <p id="textcol2">
-              
+
             </p>
-            <button id="choice1" onclick="play(1)" style="visibility:hidden">BUTTON</button>
-            <button id="choice2" onclick="play(2)" style="visibility:hidden">BUTTON</button>
+            <button id="choice1" onclick="play(forward)" style="visibility:hidden">BUTTON</button>
+            <button id="choice2" onclick="play(backward)" style="visibility:hidden">BUTTON</button>
           </center>
         </td>
         <td>
           <center>
             <img id="imgcol3" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
             <p id="textcol3">
-              
+
             </p>
             <button id="confirm" style="visibility:hidden" onclick="col3ok()">BUTTON</button>
           </center>
@@ -107,6 +107,22 @@
       elText.textContent = newText;
 
     }
+
+    var play = function (action){
+      alert("play function called");
+      if (action = "forward"){
+        alert("you clicked forward");
+        changeText("textcol2",col2TextInfo[0]);
+      }
+      else if (action = "backward"){
+        changeText("textcol2",col2TextInfo[1]);
+        alert("You clikcked backward")
+      }
+      else {
+        alert("NOPE");
+      }
+    }
+
 
   </script>
 
