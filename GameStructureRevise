@@ -1,0 +1,31 @@
+
+//Code as switch function????
+
+play = function(selectedChoice){
+  if (choice1){ //back up into closet
+    return result1; //not very productive
+  }
+  else if (choice2) { //move forward
+    return result2; //darkened alley with creature
+  }
+  else if (choice3){ //punch alien
+    return result3; //eats arm! You die. End of game
+  }
+  else if (choice4){ //kick alien
+    return result4; //awesome explosion!! End of game
+  }
+  else {
+    return error?
+  }
+};
+
+-User enters selectedChoice from column2 (choice1 or choice2)
+-selectedChoice (choice1 or choice2) is fed into first turn of the game
+-updateCol2(hide buttons, newpic, newtext);
+-updateCol3(newpic and newtext based on selectedChoice, show button);
+
+-OK button from col3 is pushed and runs function:
+  -updateCol1 with new scenario
+  -updateCol2 with new choices (choice3 or choice4)
+-selectedChoice (choice3 or choice4) is fed into second turn of the game
+  -output = END OF GAME
