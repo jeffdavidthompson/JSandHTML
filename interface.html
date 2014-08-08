@@ -25,19 +25,19 @@
           <center>
             <img id="imgcol2" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
             <p id="textcol2">
-              Alien
+              
             </p>
-            <button id="choice1" style="visibility:hidden">BUTTON</button>
-            <button id="choice2" style="visibility:hidden">BUTTON</button>
+            <button id="choice1" onclick="play(1)" style="visibility:hidden">BUTTON</button>
+            <button id="choice2" onclick="play(2)" style="visibility:hidden">BUTTON</button>
           </center>
         </td>
         <td>
           <center>
             <img id="imgcol3" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
             <p id="textcol3">
-              Alien
+              
             </p>
-            <button id="confirm" style="visibility:visible" onclick="col3ok()">BUTTON</button>
+            <button id="confirm" style="visibility:hidden" onclick="col3ok()">BUTTON</button>
           </center>
         </td>
       </tr>
@@ -47,9 +47,20 @@
   <!--Functions-->
    <script type='text/Javascript'>
 
+   buttonTextChoices = ["Forward","Backward","Punch","Kick"];
+
+   col1TextInfo = ["You find yourself in the middle of a small closet with no memory of how you got there. The door is ajar.","An insectoid like creature jumps toward you!"]
+
+   col2TextInfo = ["Would you like to move forward or backward?","How will you react to the alien?"]
+
+   col3TextPass = ["You step forward into the darkened hallway, only to hear a scuttling creature rushing toward you.","You kick the alien into a wall and it explodes into goo. Please purchase the DLC to continue your adventure."]
+
+   col3TextFail = ["You step backward a little to hard, your skull explodes into bits.","The alien devours your arm up to your shoulder and leaps away. Game over!"]
+
     var start = function(onclick) {
       changeText("textcol1", "You are in a closet text from game thing");
       hideButton("start");
+      updateCol2();
     }
 
     var col3ok = function(onclick) {
@@ -60,10 +71,20 @@
       updateCol1();
     }
 
+    var updateCol2 = function(){
+      showButton("choice1");
+      showButton("choice2");
+      changeText("choice1",buttonTextChoices[0]);
+      changeText("choice2",buttonTextChoices[1]);
+      changeText("textcol2","new column 2 text");
+      changePic("imgcol2","http://t0.gstatic.com/images?q=tbn:ANd9GcQywV5sRb-TwhyMyCwxohe2Y70Vjy_my9mBylos5v4sosAQnhb0NA");
+    }
+
     var updateCol1 = function(){
       changeText("textcol1", "OK is clicked. Describe new situation.");
       changePic("imgcol1","http://t0.gstatic.com/images?q=tbn:ANd9GcQywV5sRb-TwhyMyCwxohe2Y70Vjy_my9mBylos5v4sosAQnhb0NA");
     }
+
 
     var hideButton = function(buttonID){
       elButton = document.getElementById(buttonID);
