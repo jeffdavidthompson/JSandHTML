@@ -37,7 +37,7 @@
             <p id="textcol3">
               Alien
             </p>
-            <button id="confirm" style="visibility:hidden">BUTTON</button>
+            <button id="confirm" style="visibility:visible" onclick="col3ok()">BUTTON</button>
           </center>
         </td>
       </tr>
@@ -45,21 +45,49 @@
   </center>
 
   <!--Functions-->
-   <script type="text/javascript">
+   <script type='text/Javascript'>
 
     var start = function(onclick) {
-      var text = document.getElementById('textcol1');
-      text.textContent = "test";
-      var startbutton = document.getElementById('start');
-      startbutton.style.visibility = "hidden";
+      changeText("textcol1", "You are in a closet text from game thing");
+      hideButton("start");
+    }
 
-      alert("blah")
-    };
+    var col3ok = function(onclick) {
+      var nextText, nextPic, confirmButton;
+      changeText("textcol3","Text result based on Column2 selection. Death screen?");
+      changePic("imgcol3","http://media.moddb.com/images/articles/1/55/54960/auto/2t.jpg");
+      hideButton("confirm");
+      updateCol1();
+    }
 
-  //Changes starting text by importing from JS file "you are in a closet. Wat you do?"
-  //Updates image file: Closet
-  //Hides the START GAME button in column 1
-  //In column 2, unhides buttons, assigns ID choice1 and choice2, inserts image tags, imports text from JS file
+    var updateCol1 = function(){
+      changeText("textcol1", "OK is clicked. Describe new situation.");
+      changePic("imgcol1","http://t0.gstatic.com/images?q=tbn:ANd9GcQywV5sRb-TwhyMyCwxohe2Y70Vjy_my9mBylos5v4sosAQnhb0NA");
+    }
+
+    var hideButton = function(buttonID){
+      elButton = document.getElementById(buttonID);
+      elButton.style.visibility = "hidden";
+    }
+
+    var showButton = function(buttonID){
+      elbutton = document.getElementById(buttonID);
+      elbutton.style.visibility = "visible";
+
+    }
+
+    var changePic = function(imageID, imglink) {
+      elPic = document.getElementById(imageID);
+      elPic.src = imglink;
+    }
+
+    var changeText = function(textID, newText) {
+      elText = document.getElementById(textID);
+      elText.textContent = newText;
+
+    }
+
   </script>
 
 </html>
+<!--http://www.w3schools.com-->
