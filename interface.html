@@ -12,7 +12,7 @@
           <center>
             <img id="imgcol1" / src="http://www.gamesprays.com/images/icons/Headcrab_icon1153.jpg">
             <p id="textcol1">
-              Starting Text: Welcome to Half Life 3 v.01.
+              Welcome to Half Life 3 v.01.
               <br>
               Press "START GAME" to Start.
             </p>
@@ -37,7 +37,7 @@
             <p id="textcol3">
 
             </p>
-            <button id="confirm" style="visibility:hidden" onclick="col3ok()">BUTTON</button>
+            <button id="confirm" style="visibility:hidden" onclick="col3ok()">I ACCEPT MY FATE</button>
           </center>
         </td>
       </tr>
@@ -53,22 +53,22 @@
 
    col2TextInfo = ["Would you like to move forward or backward?","How will you react to the alien?"]
 
-   col3TextPass = ["You step forward into the darkened hallway, only to hear a scuttling creature rushing toward you.","You kick the alien into a wall and it explodes into goo. Please purchase the DLC to continue your adventure."]
+   col3TextPass = ["You step forward into the darkened hallway, only to hear a scuttling creature rushing toward you.","You kick the alien into a wall and it explodes into goo. CONGRATULATIONS! Please purchase the DLC to continue your adventure."]
 
-   col3TextFail = ["You step backward a little to hard, your skull explodes into bits.","The alien devours your arm up to your shoulder and leaps away. Game over!"]
+   col3TextFail = ["You step backward a little too hard. Your skull explodes into bits.","The alien devours your arm up to your shoulder and leaps away. GAME OVER!"]
 
     var start = function(onclick) {
-      changeText("textcol1", "You are in a closet text from game thing");
+      changeText("textcol1", col1TextInfo[0]);
       hideButton("start");
       updateCol2();
     }
 
     var col3ok = function(onclick) {
-      var nextText, nextPic, confirmButton;
-      changeText("textcol3","Text result based on Column2 selection. Death screen?");
-      changePic("imgcol3","http://media.moddb.com/images/articles/1/55/54960/auto/2t.jpg");
       hideButton("confirm");
+      hideButton("textcol3");
+      hideButton("imgcol3");
       updateCol1();
+      updateCol2();
     }
 
     var updateCol2 = function(){
@@ -76,12 +76,12 @@
       showButton("choice2");
       changeText("choice1",buttonTextChoices[0]);
       changeText("choice2",buttonTextChoices[1]);
-      changeText("textcol2","new column 2 text");
+      changeText("textcol2",col2TextInfo[0]);
       changePic("imgcol2","http://t0.gstatic.com/images?q=tbn:ANd9GcQywV5sRb-TwhyMyCwxohe2Y70Vjy_my9mBylos5v4sosAQnhb0NA");
     }
 
     var updateCol1 = function(){
-      changeText("textcol1", "OK is clicked. Describe new situation.");
+      changeText("textcol1", col1TextInfo[1]);
       changePic("imgcol1","http://t0.gstatic.com/images?q=tbn:ANd9GcQywV5sRb-TwhyMyCwxohe2Y70Vjy_my9mBylos5v4sosAQnhb0NA");
     }
 
@@ -109,18 +109,26 @@
     }
 
     var play = function (action){
-      alert("play function called");
       if (action == "forward"){
-        alert("you clicked forward");
-        changeText("textcol2",col2TextInfo[0]);
+        changeText("textcol3",col3TextPass[0]);
+        changePic("imgcol3", "blah");
       }
       else if (action == "backward"){
-        changeText("textcol2",col2TextInfo[1]);
-        alert("You clikcked backward")
+        changeText("textcol3",col3TextFail[0]);
+        changePic("imgcol3", "blah");
       }
-      else {
-        alert("NOPE");
+      else if (action == "kick") {
+        changeText("textcol3",col3TextPass[1]);
+        changePic("imgcol3", "blah");
       }
+      else if (action == "punch") {
+        changeText("textcol3",col3TextFail[1])
+        changePic("imgcol3", "blah");
+      }
+      hideButton("choice1");
+      hideButton("choice2");
+      showButton("confirm");
+
     }
 
 
