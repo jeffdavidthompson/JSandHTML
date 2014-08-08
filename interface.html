@@ -27,8 +27,8 @@
             <p id="textcol2">
 
             </p>
-            <button id="choice1" onclick="play(forward)" style="visibility:hidden">BUTTON</button>
-            <button id="choice2" onclick="play(backward)" style="visibility:hidden">BUTTON</button>
+            <button id="choice1" onclick="play('forward')" style="visibility:hidden">BUTTON</button>
+            <button id="choice2" onclick="play('backward')" style="visibility:hidden">BUTTON</button>
           </center>
         </td>
         <td>
@@ -45,7 +45,7 @@
   </center>
 
   <!--Functions-->
-   <script type='text/Javascript'>
+   <script>
 
    buttonTextChoices = ["Forward","Backward","Punch","Kick"];
 
@@ -110,11 +110,11 @@
 
     var play = function (action){
       alert("play function called");
-      if (action = "forward"){
+      if (action == "forward"){
         alert("you clicked forward");
         changeText("textcol2",col2TextInfo[0]);
       }
-      else if (action = "backward"){
+      else if (action == "backward"){
         changeText("textcol2",col2TextInfo[1]);
         alert("You clikcked backward")
       }
