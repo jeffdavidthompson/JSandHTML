@@ -47,8 +47,8 @@
   <!--Functions-->
    <script>
 
-   buttonTextChoicePass = ["Go Forward","Punch It"];
-   buttonTextChoiceFail = ["Go Backward","Kick It"];
+   buttonTextChoicePass = ["Go Forward","Kick It"];
+   buttonTextChoiceFail = ["Go Backward","Punch It"];
 
    col1TextInfo = ["You find yourself in the middle of a small closet with no memory of how you got there. The door is ajar.","An insectoid like creature jumps toward you!"]
 
@@ -113,13 +113,14 @@
 
 //if(isInArray(userChoice.toLowerCase(),passKeys)
 
-    var choice = function (action){
+    var choice = function(action){
       if (action == "Pass"){
         changeText("textcol3",col3TextPass[turn]);
         changePic("imgcol3", "blah");
         hideButton("choicePass");
         hideButton("choiceFail");
         showButton("refresh");
+        alert("pass on turn " + turn)
       }
       else if (action == "Fail"){
         changeText("textcol3",col3TextFail[turn]);
@@ -131,6 +132,7 @@
         hideButton("refresh");
         hideButton("choicePass");
         hideButton("choiceFail");
+        alert("fail on turn " + turn)
       }
 
     }
@@ -140,4 +142,3 @@
   </script>
 
 </html>
-<!--http://www.w3schools.com-->
