@@ -113,18 +113,34 @@
 
 //if(isInArray(userChoice.toLowerCase(),passKeys)
 
+    imageArrayFail = ["http://24.media.tumblr.com/b04f42f54f6a3606f2315eca3fde2ba5/tumblr_mojquvAnJe1qjejgbo1_400.gif","SECOND IMAGE ARRAY FAIL"]
+    imageArrayPass = ["DARKENED HALLWAY", "VICTORY SMASH ALIEN INTO WALL"]
+
     var choice = function(action){
       if (action == "Pass"){
-        changeText("textcol3",col3TextPass[turn]);
-        changePic("imgcol3", "blah");
         hideButton("choicePass");
         hideButton("choiceFail");
+        if (turn > 0) {
+          hideButton("imgcol1");
+          hideButton("textcol1");
+          hideButton("imgcol2");
+          hideButton("textcol2");
+          hideButton("refresh");
+          showButton("imgcol3");
+          changeText("textcol3", col3TextPass[turn]);
+          changePic("imgcol3", imageArrayPass[turn]);
+        }
+       else {
+        changeText("textcol3",col3TextPass[turn]);
+        changePic("imgcol3", imageArrayPass[turn]);
         showButton("refresh");
         alert("pass on turn " + turn)
+        }
       }
       else if (action == "Fail"){
         changeText("textcol3",col3TextFail[turn]);
-        changePic("imgcol3", "http://24.media.tumblr.com/b04f42f54f6a3606f2315eca3fde2ba5/tumblr_mojquvAnJe1qjejgbo1_400.gif");
+        showButton("imgcol3");
+        changePic("imgcol3", imageArrayFail[turn]);
         hideButton("textcol1");
         hideButton("textcol2");
         hideButton("imgcol1");
